@@ -1,0 +1,27 @@
+
+
+CodeIgniter 4 desde cero: Introducción
+
+https://www.youtube.com/watch?v=9b0I2bHj2mo&list=PL-Mlm_HYjCo9od4jKwVimQN7P3dK07xAb&index=3
+
+descarga
+https://codeigniter.com/download
+
+
+
+Descargar Composer Última versión: v2.8.10
+https://getcomposer.org/download/
+composer -V (version)
+
+
+tableplus
+https://tableplus.com/download/
+
+
+
+
+
+
+
+
+
