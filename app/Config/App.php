@@ -1,7 +1,7 @@
 <?php
 
 namespace Config;
-
+//cambio nuevo romi
 use CodeIgniter\Config\BaseConfig;
 
 class App extends BaseConfig
@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost/universidad/public/';
+    public string $baseURL = 'http://localhost/appuni/public/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
