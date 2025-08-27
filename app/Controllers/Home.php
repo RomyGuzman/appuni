@@ -10,10 +10,10 @@ class Home extends BaseController
     }
 }
 
-class Estudiantes extends BaseController
-{
-    public function index(): string
-    {
-        return view('estudiantes');
-    }
-}
+// class Estudiantes extends BaseController
+// {
+//     public function index(): string
+//     {
+//         return view('estudiantes');
+//     }
+// }
