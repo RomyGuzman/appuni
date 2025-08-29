@@ -1,68 +1,157 @@
-# CodeIgniter 4 Application Starter
+# Proyecto Integración CodeIgniter 4 + MySQL
 
-## What is CodeIgniter?
+## Descripción
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Este proyecto corresponde a la práctica profesionalizante de la Tecnicatura en Ciencia de Datos e Inteligencia Artificial. Consiste en la migración de una aplicación web frontend puro a un stack basado en CodeIgniter 4 (PHP) y MySQL, integrando la base de datos académica modelada en la materia “Administración de Bases de Datos con MySQL”.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+La aplicación permite la gestión básica de carreras, alumnos, cursos e inscripciones, con funcionalidades de listados, filtros y una demo guiada para el cliente con datos de prueba realistas.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+---
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Equipo
 
-## Installation & updates
+- **Project Manager (PM):** Guzmán Romina 
+- **Backend (CodeIgniter 4):** Campos Elias - Gutierrez Bello Nahuel 
+- **Frontend:** Carrera Carla - Maciel Fátima  
+- **QA / Tester:** Todos los integrantes 
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+---
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+## Tecnologías
 
-## Setup
+- PHP 8.x con CodeIgniter 4 (MVC)  
+- MySQL / MariaDB (InnoDB)  
+- XAMPP / WAMP para entorno local  
+- Git y GitHub para control de versiones  
+- PHPUnit para pruebas unitarias  
+- Trello / GitHub Projects para gestión ágil (Kanban)  
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+---
 
-## Important Change with index.php
+## Estructura del repositorio
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+/app # Código fuente de la aplicación CodeIgniter 4 
+/docs # Documentación, plan de proyecto, minutas, presentaciones 
+/sql # Scripts SQL: migraciones (DDL), datos de ejemplo (DML), backups 
+/tests # Pruebas unitarias y de integración 
+README.md # Este archivo 
+.env.example # Archivo de configuración de entorno de ejemplo
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+---
 
-## Repository Management
+## Instalación y configuración
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+1. Clonar el repositorio:
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+```bash
+git clone https://github.com/RomyGuzman/appuni.git
+cd tu_repositorio
 
-## Server Requirements
+2. Configurar el entorno local con XAMPP o WAMP, asegurándose de tener PHP 8.xy MySQL/MariaDB.
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+3. Copiar el archivo de ejemplo .env.examplea .envy configurar los parámetros de conexión a la base de datos:
+app.baseURL = 'http://localhost:universidad/'
+database.default.hostname = 127.0.0.1
+database.default.database = universidad
+database.default.username = root
+database.default.password = ********
+database.default.DBDriver = MySQLi
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+4. Ejecutar migraciones para crear el esquema de base de datos:
+php spark migrate
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+5. Carga datos de ejemplo (semillas):
+php spark db:seed App\Database\Seeds\DatosDemoSeeder
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+6. Iniciar el servidor local de desarrollo:
+php spark serve
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+7. Acceder a la aplicación en http://localhost:appuni/
+
+    Gestión de carreras, alumnos, cursos e inscripciones.
+    Formularios con validación del lado servidor y cliente
+    Seguridad: autenticación básica, protección CSRF, validaciones parametrizadas
+    Procedimiento almacenado para inscripción de alumnos
+    Listados con filtros y paginación
+    Informes básicos y métricas operativas (opcional)
+
+Pruebas
+Se incluyen pruebas unitarias y de integración con PHPUnit.
+Casos de prueba manuales documentados en /docs/plan_de_pruebas.md.
+Para ejecutar pruebas automáticas:
+vendor/bin/phpunit --colors=always
+
+Metodología ágil con Kanban (Trello / GitHub Projects)
+Versionado con Git siguiendo confirmaciones convencionales
+Pull Requests con revisión y checklist de calidad
+Integración continua con GitHub Actions (lint, pruebas)
+
+Contribuciones 
+Este repositorio es parte de una práctica académica. Para contribuciones o sugerencias, por favor abra un problema o solicitud de extracción siguiendo las plantillas definidas.
+
+Licencia
+Este proyecto es para fines educativos y no tiene licencia comercial.
+
+Contacto
+Para consultas o soporte, contacte al equipo a través del canal oficial de la materia.
+
+Referencias
+Documentación de CodeIgniter 4
+Documentación de MySQL
+Documentación de GitHub
+Unidad PHP
+ChatGPT de OpenAI
+
+
+Plantilla para solicitud de extracción
+## Descripción
+
+Por favor, incluye un resumen claro y conciso de los cambios realizados y la motivación detrás de ellos.
+
+---
+
+## Tipo de cambio
+
+- [ ] Feature (nueva funcionalidad)
+- [ ] Bugfix (corrección de error)
+- [ ] Documentación
+- [ ] Refactorización
+- [ ] Test
+- [ ] Otro (especificar): ____________
+
+---
+
+## Checklist
+
+- [ ] El código sigue las guías de estilo del proyecto
+- [ ] He realizado una auto-revisión del código
+- [ ] He comentado el código, especialmente en áreas complejas
+- [ ] He agregado pruebas que demuestran que la corrección o funcionalidad funciona
+- [ ] Las pruebas nuevas y existentes pasan localmente con éxito
+- [ ] He actualizado la documentación correspondiente (README, comentarios, etc.)
+- [ ] He incluido migraciones o seeds si aplica
+- [ ] He adjuntado evidencia (screenshots, logs, GIFs) si aplica
+
+---
+
+## Evidencia
+
+Adjunta aquí capturas de pantalla, logs o GIFs que muestren el funcionamiento o los resultados de los cambios.
+
+---
+
+## Notas de despliegue
+
+- ¿Requiere migrar base de datos? (sí/no)  
+- Variables de entorno nuevas o modificadas:  
+
+---
+
+## Issues relacionados
+
+Closes # (número de issue relacionado)
+
+---
+
+
