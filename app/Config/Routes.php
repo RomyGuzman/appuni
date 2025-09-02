@@ -16,9 +16,24 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
 
  */
-$routes->get('/', 'Home::index');
-$routes->get('/estudiantes', 'Estudiantes::index');
+$routes->get('/', 'Home::index'); // Institucional / Index
+$routes->get('/estudiantes', 'Estudiantes::index');// Página estudiantes
+$routes->get('/home/index', 'Home::index');     // Alias para institucional
+$routes->get('/registrarCarrera', 'RegistrarCarrera::index'); // Carreras
+
+
+$routes->get('registrarCarrera', 'registrarCarrera::index');
+$routes->get('estudiantes', 'Estudiantes::index');
+$routes->get('categorias', 'Categorias::index');
+
+
+
+
+
+
 $routes->get('/estudiantes/(:num)', 'Estudiantes::show/$1');
+
+
             
 $routes->get('/estudiantes/crear', 'Estudiantes::crear');
 $routes->post('/estudiantes/guardar', 'Estudiantes::guardar');
